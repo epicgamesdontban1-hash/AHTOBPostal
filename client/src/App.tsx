@@ -10,7 +10,8 @@ import Home from "@/pages/home";
 import Services from "@/pages/services";
 import About from "@/pages/about";
 import Contact from "@/pages/contact";
-import Tracking from "@/pages/tracking";
+import TrackingEnhanced from "@/pages/tracking-enhanced";
+import SendPackage from "@/pages/send-package";
 
 function Router() {
   return (
@@ -19,7 +20,8 @@ function Router() {
       <Route path="/services" component={Services} />
       <Route path="/about" component={About} />
       <Route path="/contact" component={Contact} />
-      <Route path="/tracking" component={Tracking} />
+      <Route path="/tracking" component={TrackingEnhanced} />
+      <Route path="/send-package" component={SendPackage} />
       {/* Fallback to 404 */}
       <Route component={NotFound} />
     </Switch>

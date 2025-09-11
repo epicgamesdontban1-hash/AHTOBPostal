@@ -23,12 +23,12 @@ export function PricingCalculator() {
   const handleCalculate = () => {
     // Mock calculation
     const basePrice = parseFloat(formData.weight) * 2.5;
-    const serviceMultiplier = formData.serviceType === "same-day" ? 3 : 
-                              formData.serviceType === "express" ? 1.5 : 1;
+    const serviceMultiplier = formData.serviceType === "express" ? 2.0 : 
+                              formData.serviceType === "domestic" ? 0.4 : 1;
     const totalCost = (basePrice * serviceMultiplier).toFixed(2);
     
-    const deliveryDays = formData.serviceType === "same-day" ? 0 : 
-                        formData.serviceType === "express" ? 1 : 3;
+    const deliveryDays = formData.serviceType === "express" ? 3 : 
+                        formData.serviceType === "domestic" ? 2 : 7;
     
     const deliveryDate = new Date();
     deliveryDate.setDate(deliveryDate.getDate() + deliveryDays);
@@ -65,7 +65,7 @@ export function PricingCalculator() {
                 <Label htmlFor="from-zip">From ZIP Code</Label>
                 <Input
                   id="from-zip"
-                  placeholder="10001"
+                  placeholder=""
                   value={formData.fromZip}
                   onChange={(e) => setFormData(prev => ({ ...prev, fromZip: e.target.value }))}
                   data-testid="input-from-zip"
@@ -75,7 +75,7 @@ export function PricingCalculator() {
                 <Label htmlFor="to-zip">To ZIP Code</Label>
                 <Input
                   id="to-zip"
-                  placeholder="10002"
+                  placeholder=""
                   value={formData.toZip}
                   onChange={(e) => setFormData(prev => ({ ...prev, toZip: e.target.value }))}
                   data-testid="input-to-zip"
@@ -86,7 +86,7 @@ export function PricingCalculator() {
                 <Input
                   id="weight"
                   type="number"
-                  placeholder="2.5"
+                  placeholder=""
                   value={formData.weight}
                   onChange={(e) => setFormData(prev => ({ ...prev, weight: e.target.value }))}
                   data-testid="input-weight"
@@ -96,12 +96,12 @@ export function PricingCalculator() {
                 <Label htmlFor="service-type">Service Type</Label>
                 <Select value={formData.serviceType} onValueChange={(value) => setFormData(prev => ({ ...prev, serviceType: value }))}>
                   <SelectTrigger data-testid="select-service-type">
-                    <SelectValue placeholder="Select service type" />
+                    <SelectValue placeholder="" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="standard">Standard (3-5 days)</SelectItem>
-                    <SelectItem value="express">Express (1-2 days)</SelectItem>
-                    <SelectItem value="same-day">Same Day</SelectItem>
+                    <SelectItem value="standard">Smart Standard</SelectItem>
+                    <SelectItem value="express">Lightning Express</SelectItem>
+                    <SelectItem value="domestic">Local Pro</SelectItem>
                   </SelectContent>
                 </Select>
               </div>

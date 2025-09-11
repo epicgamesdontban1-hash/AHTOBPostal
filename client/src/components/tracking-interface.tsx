@@ -104,7 +104,7 @@ export function TrackingInterface({ showTitle = true }: { showTitle?: boolean })
             <div className="flex-1">
               <Input
                 type="text"
-                placeholder="Enter tracking number (e.g., AHT123456789)"
+                placeholder=""
                 value={trackingNumber}
                 onChange={(e) => setTrackingNumber(e.target.value)}
                 onKeyPress={handleKeyPress}

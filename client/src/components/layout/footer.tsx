@@ -1,6 +1,11 @@
 import { Link } from "wouter";
 import { companyConfig } from "@/lib/config";
 
+const scrollToTopAndNavigate = (href: string) => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  window.location.href = href;
+};
+
 export function Footer() {
   return (
     <footer className="bg-card border-t border-border py-12">
@@ -40,11 +45,13 @@ export function Footer() {
             <ul className="space-y-2">
               {companyConfig.footerLinks.quickLinks.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} data-testid={`link-footer-${link.name.toLowerCase().replace(" ", "-")}`}>
-                    <span className="text-muted-foreground hover:text-primary transition-colors hover-elevate px-2 py-1 rounded-md">
-                      {link.name}
-                    </span>
-                  </Link>
+                  <span 
+                    className="text-muted-foreground hover:text-primary transition-colors hover-elevate px-2 py-1 rounded-md cursor-pointer"
+                    onClick={() => scrollToTopAndNavigate(link.href)}
+                    data-testid={`link-footer-${link.name.toLowerCase().replace(" ", "-")}`}
+                  >
+                    {link.name}
+                  </span>
                 </li>
               ))}
             </ul>
@@ -56,11 +63,13 @@ export function Footer() {
             <ul className="space-y-2">
               {companyConfig.footerLinks.services.map((service, index) => (
                 <li key={`service-${index}-${service.name}`}>
-                  <Link href={service.href} data-testid={`link-footer-service-${service.name.toLowerCase().replace(" ", "-")}`}>
-                    <span className="text-muted-foreground hover:text-primary transition-colors hover-elevate px-2 py-1 rounded-md">
-                      {service.name}
-                    </span>
-                  </Link>
+                  <span 
+                    className="text-muted-foreground hover:text-primary transition-colors hover-elevate px-2 py-1 rounded-md cursor-pointer"
+                    onClick={() => scrollToTopAndNavigate(service.href)}
+                    data-testid={`link-footer-service-${service.name.toLowerCase().replace(" ", "-")}`}
+                  >
+                    {service.name}
+                  </span>
                 </li>
               ))}
             </ul>
@@ -72,11 +81,13 @@ export function Footer() {
             <ul className="space-y-2">
               {companyConfig.footerLinks.support.map((support) => (
                 <li key={support.href}>
-                  <Link href={support.href} data-testid={`link-footer-support-${support.name.toLowerCase().replace(" ", "-")}`}>
-                    <span className="text-muted-foreground hover:text-primary transition-colors hover-elevate px-2 py-1 rounded-md">
-                      {support.name}
-                    </span>
-                  </Link>
+                  <span 
+                    className="text-muted-foreground hover:text-primary transition-colors hover-elevate px-2 py-1 rounded-md cursor-pointer"
+                    onClick={() => scrollToTopAndNavigate(support.href)}
+                    data-testid={`link-footer-support-${support.name.toLowerCase().replace(" ", "-")}`}
+                  >
+                    {support.name}
+                  </span>
                 </li>
               ))}
             </ul>

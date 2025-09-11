@@ -36,8 +36,8 @@ export function Navigation() {
     <nav
       className={`fixed w-full top-0 z-50 transition-all duration-200 ${
         isScrolled
-          ? "bg-card/95 glass-effect backdrop-blur-md border-b border-border"
-          : "bg-card/80 glass-effect backdrop-blur-md border-b border-border"
+          ? "bg-card/98 glass-effect border-b border-border"
+          : "bg-card/95 glass-effect border-b border-border"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -48,12 +48,14 @@ export function Navigation() {
               <div className="bg-primary text-primary-foreground w-10 h-10 rounded-lg flex items-center justify-center font-bold text-lg">
                 A
               </div>
-              <span className="font-bold text-xl text-foreground">
-                {companyConfig.name}
-              </span>
-              <span className="text-muted-foreground text-sm hidden sm:inline">
-                South Africa to the World
-              </span>
+              <div className="flex flex-col">
+                <span className="font-bold text-lg text-foreground leading-tight">
+                  AHTOB
+                </span>
+                <span className="text-muted-foreground text-xs leading-tight">
+                  South Africa to the World
+                </span>
+              </div>
             </div>
           </Link>
 
@@ -66,17 +68,20 @@ export function Navigation() {
                 data-testid={`link-nav-${item.name.toLowerCase().replace(" ", "-")}`}
               >
                 <span
-                  className={`transition-colors hover-elevate px-2 py-1 rounded-md ${
+                  className={`transition-colors hover-elevate px-2 py-1 rounded-md cursor-pointer ${
                     isActiveLink(item.href)
                       ? "text-primary font-medium"
                       : "text-foreground hover:text-primary"
                   }`}
+                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                 >
                   {item.name}
                 </span>
               </Link>
             ))}
-            <Button data-testid="button-get-quote">Get Quote</Button>
+            <Link href="/send-package">
+              <Button data-testid="button-get-quote">Get Quote</Button>
+            </Link>
           </div>
 
           {/* Mobile menu button */}
@@ -109,23 +114,29 @@ export function Navigation() {
                     data-testid={`link-mobile-${item.name.toLowerCase().replace(" ", "-")}`}
                   >
                     <span
-                      className={`block transition-colors py-2 hover-elevate px-2 rounded-md ${
+                      className={`block transition-colors py-2 hover-elevate px-2 rounded-md cursor-pointer ${
                         isActiveLink(item.href)
                           ? "text-primary font-medium"
                           : "text-foreground hover:text-primary"
                       }`}
-                      onClick={() => setIsMobileMenuOpen(false)}
+                      onClick={() => {
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                        setIsMobileMenuOpen(false);
+                      }}
                     >
                       {item.name}
                     </span>
                   </Link>
                 ))}
-                <Button
-                  className="w-full mt-4"
-                  data-testid="button-mobile-get-quote"
-                >
-                  Get Quote
-                </Button>
+                <Link href="/send-package">
+                  <Button
+                    className="w-full mt-4"
+                    data-testid="button-mobile-get-quote"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Get Quote
+                  </Button>
+                </Link>
               </div>
             </SheetContent>
           </Sheet>

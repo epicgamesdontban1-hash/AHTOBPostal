@@ -198,7 +198,7 @@ export default function Contact() {
                       <Label htmlFor="subject">Subject *</Label>
                       <Select required value={formData.subject} onValueChange={(value) => handleInputChange("subject", value)}>
                         <SelectTrigger data-testid="select-subject">
-                          <SelectValue placeholder="Select a subject" />
+                          <SelectValue placeholder="" />
                         </SelectTrigger>
                         <SelectContent>
                           <SelectItem value="general">General Inquiry</SelectItem>
@@ -218,7 +218,7 @@ export default function Contact() {
                         required
                         value={formData.message}
                         onChange={(e) => handleInputChange("message", e.target.value)}
-                        placeholder="Please describe your inquiry or provide details about your shipping needs..."
+                        placeholder=""
                         data-testid="textarea-message"
                       />
                     </div>
